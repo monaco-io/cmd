@@ -27,7 +27,7 @@ ascii_art --name=bilibili.com
 
 ### Usage
 
-```txt
+```
 # monaco @ monacos-MacBook-Pro in ~/workspace/cmd on git:main o [17:32:27]
 $ zsh
                         //
