@@ -1,15 +1,15 @@
-# ASCII_ART
+# ascii_art
 
 ## how to install
 
 add this to your .zshrc/.bashrc
 
 ```sh
-ASCII_ART --name=bilibili.com
+ascii_art --name=bilibili.com
 ```
 
 ## options
 
 ```sh
-ASCII_ART --name=tencent.com
+ascii_art --name=tencent.com
 ```
