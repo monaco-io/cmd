@@ -1,5 +1,11 @@
 # cmd
 
+## step0:
+
+```sh
+git clone https://github.com/monaco-io/cmd.git
+```
+
 ## [ascii_art](ascii_art) 命令行炫酷文案
 
 ### Installation
