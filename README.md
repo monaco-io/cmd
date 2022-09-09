@@ -72,3 +72,17 @@ I have an apple
 ```sh
 make timestamp
 ```
+
+### Usage
+
+```sh
+# monaco @ monacos-MacBook-Pro in ~/workspace/cmd on git:main o [17:42:21]
+$ timestamp now
+2022/09/09 17:42:24 now
+unix timestamp now is: 1662716544
+
+# monaco @ monacos-MacBook-Pro in ~/workspace/cmd on git:main o [17:42:24]
+$ timestamp 1662716544
+2022/09/09 17:42:33 1662716544
+tims is: 2022-09-09T17:42:24+08:00
+```
