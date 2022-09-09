@@ -25,6 +25,26 @@ ascii_art --name=bilibili.com
 # ascii_art --name=tencent.com
 ```
 
+### Usage
+
+```txt
+# monaco @ monacos-MacBook-Pro in ~/workspace/cmd on git:main o [17:32:27]
+$ zsh
+                        //
+           \\          //
+            \\        //
+    ##DDDDDDDDDDDDDDDDDDDDDDDD##
+    ## DDDDDDDDDDDDDDDDDDDDDD ##   ________   ___   ___        ___   ________   ___   ___        ___
+    ## hh                  hh ##   |\   __  \ |\  \ |\  \      |\  \ |\   __  \ |\  \ |\  \      |\  \
+    ## hh     //    \\     hh ##   \ \  \|\ /_\ \  \\ \  \     \ \  \\ \  \|\ /_\ \  \\ \  \     \ \  \
+    ## hh    //      \\    hh ##    \ \   __  \\ \  \\ \  \     \ \  \\ \   __  \\ \  \\ \  \     \ \  \
+    ## hh                  hh ##     \ \  \|\  \\ \  \\ \  \____ \ \  \\ \  \|\  \\ \  \\ \  \____ \ \  \
+    ## hh       wwww       hh ##      \ \_______\\ \__\\ \_______\\ \__\\ \_______\\ \__\\ \_______\\ \__\
+    ## hh                  hh ##       \|_______| \|__| \|_______| \|__| \|_______| \|__| \|_______| \|__|
+    ## MMMMMMMMMMMMMMMMMMMMMM ##
+    ##MMMMMMMMMMMMMMMMMMMMMMMM##                    live.bilibili.com  game.bilibili.com  www.bilibili.com
+```
+
 ## [fanyi](fanyi) 中英翻译工具
 
 ### Installation
