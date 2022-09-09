@@ -4,6 +4,7 @@
 
 ```sh
 git clone https://github.com/monaco-io/cmd.git
+cd cmd
 ```
 
 ## [ascii_art](ascii_art) 命令行炫酷文案
