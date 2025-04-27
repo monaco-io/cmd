@@ -12,17 +12,34 @@ import (
 
 const (
 	defaultFont = "epic"
+	defaultText = "ascii-art"
 )
 
-var (
-	//go:embed fonts/*
-	fonts embed.FS
-)
+//go:embed fonts/*
+var fonts embed.FS
 
 func List() {
+	for _, v := range getAllFaceNames() {
+		fmt.Println(v)
+	}
+}
+
+func getAllFaceNames() []string {
 	files, _ := fonts.ReadDir("fonts")
+	var names []string
 	for i := range files {
-		fmt.Println(strings.Replace(files[i].Name(), ".flf", "", 1))
+		names = append(names, strings.Replace(files[i].Name(), ".flf", "", 1))
+	}
+	return names
+}
+
+func EchoAll(text string) {
+	if text == "" {
+		text = defaultText
+	}
+	for _, v := range getAllFaceNames() {
+		fmt.Printf("\nFont: %s\n", v)
+		Echo(text, v)
 	}
 }
 
@@ -51,6 +68,10 @@ func AsciiArt(text, fontName string) (str string) {
 		str += fmt.Sprintf("%s\n", printRow)
 	}
 	return
+}
+
+func Echo(text, fontName string) {
+	fmt.Println(AsciiArt(text, fontName))
 }
 
 type font struct {
