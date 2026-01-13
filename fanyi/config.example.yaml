@@ -1,0 +1,70 @@
+# Fanyi Configuration Example
+# Copy this file to ~/.config/fanyi/config.yaml and update with your settings
+
+# API Configuration
+api:
+  # Large Language Model API endpoint
+  endpoint: "https://api.openai.com/v1/chat/completions/v1/chat/completions"
+
+  # API authentication key
+  key: "sk-your-api-key-here"
+
+  # Model name to use
+  model: "gpt-4"
+
+  # Request timeout in seconds
+  timeout: 30
+
+  # Maximum tokens for response
+  max_tokens: 1000
+
+  # Temperature for response creativity (0.0-2.0)
+  temperature: 0.7
+
+# Language Configuration
+languages:
+  # Common languages for translation
+  common:
+    - zh # Chinese (Simplified)
+    - en # English
+    - ja # Japanese
+    - ko # Korean
+    - es # Spanish
+    - fr # French
+    - de # German
+    - ru # Russian
+    - pt # Portuguese
+    - it # Italian
+
+  # Priority order for automatic translation
+  # When no target language is specified, translate in this order
+  priority:
+    - zh # Chinese is first priority
+    - en # English is second priority
+
+# Cache Configuration
+cache:
+  # Enable translation result caching
+  enabled: true
+
+  # Cache directory (relative to home directory)
+  directory: ".cache/fanyi"
+
+  # Cache expiration time in hours (0 = never expire)
+  ttl: 720 # 30 days
+
+# Advanced Configuration
+advanced:
+  # Enable debug logging
+  debug: false
+
+  # Log directory (relative to home directory)
+  log_dir: ".log/fanyi"
+
+  # Custom prompt template
+  # Available variables: {language}, {input_text}
+  prompt_template: |
+    You are a professional translator. Translate the following text to {language}.
+    Only return the translated text without any explanation or additional content.
+
+    Text: {input_text}
