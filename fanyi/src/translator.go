@@ -11,7 +11,6 @@ import (
 type Translator struct {
 	config *Config
 	client *Client
-	cache  *Cache
 	logger *slog.Logger
 }
 
@@ -26,7 +25,6 @@ func NewTranslator(cfg *Config) (*Translator, error) {
 	return &Translator{
 		config: cfg,
 		client: NewClient(cfg),
-		cache:  NewCache(cfg),
 		logger: log,
 	}, nil
 }
@@ -67,11 +65,6 @@ func (t *Translator) Translate(text string, targetLang string) (string, error) {
 
 // translateToLanguage translates text to a specific language
 func (t *Translator) translateToLanguage(text, lang string) (string, error) {
-	// Check cache first
-	if cached, found := t.cache.Get(text, lang); found {
-		t.logger.Debug("cache hit", "lang", lang)
-		return cached, nil
-	}
 
 	// Translate via API
 	t.logger.Debug("calling API", "lang", lang)
@@ -79,13 +72,6 @@ func (t *Translator) translateToLanguage(text, lang string) (string, error) {
 	if err != nil {
 		return "", fmt.Errorf("translation failed: %w", err)
 	}
-
-	// Cache the result
-	if err := t.cache.Set(text, lang, translation); err != nil {
-		t.logger.Error("failed to cache translation", "lang", lang, "err", err)
-		// Don't fail on cache errors
-	}
-
 	return translation, nil
 }
 

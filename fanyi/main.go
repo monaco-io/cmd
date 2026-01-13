@@ -30,7 +30,6 @@ func (*fanyiCmd) Usage() string {
 
 OPTIONS:
 	--init                      Initialize config at ~/.config/fanyi/config.yaml
-	--no-cache                  Skip cache (force fresh translation)
 
 EXAMPLES:
   fanyi hello world
@@ -41,7 +40,6 @@ EXAMPLES:
 
 func (c *fanyiCmd) SetFlags(f *flag.FlagSet) {
 	f.BoolVar(&c.init, "init", false, "Initialize config file (~/.config/fanyi/config.yaml)")
-	f.BoolVar(&c.noCache, "no-cache", false, "Skip cache")
 }
 
 func (c *fanyiCmd) Execute(_ context.Context, f *flag.FlagSet, _ ...interface{}) subcommands.ExitStatus {
@@ -62,11 +60,6 @@ func (c *fanyiCmd) Execute(_ context.Context, f *flag.FlagSet, _ ...interface{})
 		fmt.Fprintf(os.Stderr, "\nQuick fix: Set your API key with:\n")
 		fmt.Fprintf(os.Stderr, "  export FANYI_API_KEY=\"sk-your-api-key-here\"\n\n")
 		return subcommands.ExitFailure
-	}
-
-	// Disable cache if requested
-	if c.noCache {
-		cfg.Cache.Enabled = false
 	}
 
 	// Create translator

@@ -14,7 +14,6 @@ import (
 type Config struct {
 	API       APIConfig      `yaml:"api"`
 	Languages LanguageConfig `yaml:"languages"`
-	Cache     CacheConfig    `yaml:"cache"`
 	Advanced  AdvancedConfig `yaml:"advanced"`
 }
 
@@ -62,11 +61,6 @@ func DefaultConfig() *Config {
 		Languages: LanguageConfig{
 			Common:   []string{"zh", "en", "ja", "ko", "es", "fr", "de", "ru", "pt", "it"},
 			Priority: []string{"zh", "en"},
-		},
-		Cache: CacheConfig{
-			Enabled:   true,
-			Directory: ".cache/fanyi",
-			TTL:       720, // 30 days in hours
 		},
 		Advanced: AdvancedConfig{
 			Debug:  false,
@@ -136,14 +130,6 @@ func (c *Config) applyEnvVars() {
 		c.Languages.Priority = strings.Split(priority, ",")
 	}
 
-	// Cache configuration
-	if enabled := os.Getenv("FANYI_CACHE_ENABLED"); enabled != "" {
-		c.Cache.Enabled = enabled == "true"
-	}
-	if dir := os.Getenv("FANYI_CACHE_DIR"); dir != "" {
-		c.Cache.Directory = dir
-	}
-
 	// Advanced configuration
 	if debug := os.Getenv("FANYI_DEBUG"); debug != "" {
 		c.Advanced.Debug = debug == "true"
@@ -168,18 +154,6 @@ func (c *Config) Validate() error {
 		return fmt.Errorf("at least one priority language is required")
 	}
 	return nil
-}
-
-// GetCacheDir returns the absolute path to the cache directory
-func (c *Config) GetCacheDir() string {
-	if filepath.IsAbs(c.Cache.Directory) {
-		return c.Cache.Directory
-	}
-	homeDir, err := os.UserHomeDir()
-	if err != nil {
-		return c.Cache.Directory
-	}
-	return filepath.Join(homeDir, c.Cache.Directory)
 }
 
 // GetLogDir returns the absolute path to the log directory

@@ -42,17 +42,6 @@ languages:
     - zh # Chinese is first priority
     - en # English is second priority
 
-# Cache Configuration
-cache:
-  # Enable translation result caching
-  enabled: true
-
-  # Cache directory (relative to home directory)
-  directory: ".cache/fanyi"
-
-  # Cache expiration time in hours (0 = never expire)
-  ttl: 720 # 30 days
-
 # Advanced Configuration
 advanced:
   # Enable debug logging
